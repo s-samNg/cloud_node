@@ -4,7 +4,7 @@ const woodsCtrl = require("../controllers/woods.js");
 
 // router.get('/woods', function (req, res) { res.send('List of woods'); });
 
-router.get("/woods", woodsCtrl.woods); 
+router.get("/", woodsCtrl.readALL); 
 
 
 module.exports = router;
