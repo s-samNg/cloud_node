@@ -1,3 +1,3 @@
-exports.woods = (req, res) => {
+exports.readALL = (req, res) => {
     res.send('List of woods'); 
 }
