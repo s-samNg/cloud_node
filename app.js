@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express() 
-module.exports = app;
+
 const router = require("./app/routes/index.js");
 app.use("/api", router);
 
@@ -10,3 +10,5 @@ db.sequelize
  .authenticate() 
  .then(() => console.log("Database connected ...")) 
  .catch((err) => console.log(err));
+
+ module.exports = app;
