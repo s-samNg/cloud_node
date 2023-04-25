@@ -8,9 +8,9 @@ module.exports = {
      *
      */ Example:
      await queryInterface.bulkInsert('Woods', [{
-      name: "Épicéa",
-      type: "softwood",
-      hardness: "tender"
+        name: "Épicéa",
+        type: "softwood",
+        hardness: "tender"
       
       },
 
@@ -22,20 +22,20 @@ module.exports = {
 
       {
         name: "Padouk",
-          type: "exotic wood",
-          hardness: "hard",
+        type: "exotic wood",
+        hardness: "hard",
       },
 
       {
         name: "Érable",
-          type: "noble and hardwoods",
-          hardness: "medium-hard",
+        type: "noble and hardwoods",
+        hardness: "medium-hard",
       },
 
       {
         name: "Hêtre",
-          type: "noble and hardwoods",
-          hardness: "medium-hard",
+        type: "noble and hardwoods",
+        hardness: "medium-hard",
       },
       {
         name: "Itauba",
