@@ -48,7 +48,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       type: {
-        type: Sequelize.ENUM('softwood', 'exotic wood', 'noble and harwoods')
+        type: Sequelize.ENUM('softwood', 'exotic wood', 'noble and hardwoods') 
       },
       hardness: {
         type: Sequelize.ENUM('tender', 'medium-hard', 'hard')
