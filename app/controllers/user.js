@@ -6,6 +6,8 @@ const saltRounds = 10;
 exports.signup = async (req, res) => {
     try {
 
+        const {password} = req.body;
+
         const hashedPassword = await bcrypt.hash(password, saltRounds);
         const user = await User.create({ ...req.body, password: hashedPassword });
 
