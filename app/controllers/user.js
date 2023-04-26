@@ -1,33 +1,30 @@
 // const User = require('../models/user');
+const { User } = require("../models");
 
 exports.signup = async (req, res) => {
-    try{
-        const user = await User.create({ 
-            firstName: "John",
-            lastName: "Doe",
-            email: "john.doe@mail.com",
-            password: "123456"
-          });
+    try {
+        const user = await User.create({ ...req.body });
 
-          res.status(201).json(user);
+        res.status(201).json({ user });
+        // res.send('You are signup');
+
     } catch (error) {
         console.error(error);
-
+        res.status(500).json({ error: 'Erreur, contactez le support' });
     }
-   
+}
+ 
 
-    // console.log(req.body)
-    // res.json(req.body)
-    // res.send('You are signup'); 
+
+
+
+exports.login = (req, res) => {
+    console.log(req.body)
+    res.json(req.body)
+    res.send('You are login'); 
 }
 
 
-
-// exports.login = (req, res) => {
-//     console.log(req.body)
-//     res.json(req.body)
-//     res.send('You are login'); 
-// }
 
 
 
