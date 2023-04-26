@@ -1,3 +1,4 @@
+require('dotenv').config();
 const { User } = require("../models");
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -20,11 +21,10 @@ exports.signup = async (req, res) => {
     }
 }
 
-
-
 exports.login = async (req, res) => {
 
     const {email} = req.body;
+    const secretKey = process.env.SECRET_KEY;
 
     try {
         const user = await User.findOne({
@@ -36,8 +36,9 @@ exports.login = async (req, res) => {
         if (user) {
             const passwordCompare = await bcrypt.compare(password, hashedPassword);
             if (passwordCompare) {
-                // var token = jwt.sign({ foo: 'bar' }, 'shhhhh');
-                res.status(200).json({ user }); 
+
+                const token = jwt.sign({ userId: user.id }, secretKey );
+                res.status(200).json({ user, token }); 
             }
 
             

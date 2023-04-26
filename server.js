@@ -18,7 +18,7 @@
 
 // Hello world with express js 
 
-require('dotenv').config()
+require('dotenv').config();
 const app = require("./app.js");
 
 // const express = require('express')
