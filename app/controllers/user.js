@@ -1,6 +1,6 @@
-// const User = require('../models/user');
 const { User } = require("../models");
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const saltRounds = 10;
 
 exports.signup = async (req, res) => {
@@ -22,10 +22,36 @@ exports.signup = async (req, res) => {
 
 
 
-exports.login = (req, res) => {
-    console.log(req.body)
-    res.json(req.body)
-    res.send('You are login'); 
+exports.login = async (req, res) => {
+
+    const {email} = req.body;
+
+    try {
+        const user = await User.findOne({
+            where: {
+                email: email
+            }
+        })
+
+        if (user) {
+            const passwordCompare = await bcrypt.compare(password, hashedPassword);
+            if (passwordCompare) {
+                // var token = jwt.sign({ foo: 'bar' }, 'shhhhh');
+                res.status(200).json({ user }); 
+            }
+
+            
+        } else {
+            res.status(404).json({ error: 'Aucun utilisateur trouvé' }); 
+        }
+       
+
+    }catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Erreur, contactez le support' });
+    }
+
+
 }
 
 
