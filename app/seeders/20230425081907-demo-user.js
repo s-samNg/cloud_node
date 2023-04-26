@@ -11,7 +11,7 @@ module.exports = {
       firstName: 'John',
       lastName: 'Doe',
       email: "john.doe@mail.com",
-      password: "123456",
+      password: "hashedPassword",
         //isBetaMember: false
       }], {});
     

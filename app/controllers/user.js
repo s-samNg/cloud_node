@@ -1,9 +1,13 @@
 // const User = require('../models/user');
 const { User } = require("../models");
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 exports.signup = async (req, res) => {
     try {
-        const user = await User.create({ ...req.body });
+
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+        const user = await User.create({ ...req.body, password: hashedPassword });
 
         res.status(201).json({ user });
         // res.send('You are signup');
@@ -13,8 +17,6 @@ exports.signup = async (req, res) => {
         res.status(500).json({ error: 'Erreur, contactez le support' });
     }
 }
- 
-
 
 
 
