@@ -33,3 +33,21 @@ exports.readByHardness = async (req, res) => {
         res.status(500).json({ error: 'Erreur, contactez le support' });
     }
 }
+
+exports.create = async (req, res) => {
+	
+
+    try {
+
+      const wood = await Wood.create({ ...req.body });
+      res.status(201).json(wood);
+
+    } catch (error) {
+
+      console.error(error);
+      res.status(500).json({ message: 'Erreur, contactez le support' });
+
+    }
+    
+}
+    
