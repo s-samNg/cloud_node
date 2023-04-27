@@ -23,8 +23,10 @@ exports.signup = async (req, res) => {
 
 exports.login = async (req, res) => {
 
-    const {email} = req.body;
+    const {email, password} = req.body;
     const secretKey = process.env.SECRET_KEY;
+    
+    
 
     try {
         const user = await User.findOne({
@@ -34,7 +36,7 @@ exports.login = async (req, res) => {
         })
 
         if (user) {
-            const passwordCompare = await bcrypt.compare(password, hashedPassword);
+            const passwordCompare = await bcrypt.compare(password, user.password);
             if (passwordCompare) {
 
                 const token = jwt.sign({ userId: user.id }, secretKey );
