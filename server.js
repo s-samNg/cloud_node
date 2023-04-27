@@ -16,29 +16,22 @@
 // });
 
 
-// Hello world with express js 
-
 var cors = require('cors')
 
 require('dotenv').config();
 const app = require("./app.js");
 
-// const express = require('express')
-// const app = express()
+
 const port =process.env.PORT
 
-// app.get('/', (req, res) => {
-   
-//   res.send('Hello World!')
-// })
 
-const corsOptions = {
-  origin: 'http://localhost:8080',
+
+var corsOptions = {
+  origin: "http://localhost:8080/",
+  optionsSuccessStatus: 200,
 };
 
-app.get('/', cors(corsOptions), function (req, res, next) {
-  res.json({msg: 'This is CORS-enabled for only http://localhost:8080'})
-})
+app.use(cors(corsOptions));
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
