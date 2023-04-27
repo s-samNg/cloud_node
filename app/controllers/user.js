@@ -39,6 +39,8 @@ exports.login = async (req, res) => {
 
                 const token = jwt.sign({ userId: user.id }, secretKey );
                 res.status(200).json({ user, token }); 
+            }else {
+                res.status(401).json({ error: 'Mot de passe incorrecte' });
             }
 
             
