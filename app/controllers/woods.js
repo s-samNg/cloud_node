@@ -15,7 +15,7 @@ exports.readALL = async (req, res) => {
     
 }
 
-exports.findByHardness = async (req, res) => {
+exports.readByHardness = async (req, res) => {
     
     const {hardness} = req.params;
 
@@ -25,7 +25,7 @@ exports.findByHardness = async (req, res) => {
                 hardness: hardness
              }   
         })
-        
+
         res.status(200).json({ woods });
 
     }catch (error) {

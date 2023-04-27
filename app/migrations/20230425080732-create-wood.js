@@ -18,6 +18,10 @@ module.exports = {
       hardness: {
         type: Sequelize.ENUM('tender', 'medium-hard', 'hard')
       },
+      image: {
+        allowNyll: true,
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

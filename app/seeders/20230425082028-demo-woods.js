@@ -11,19 +11,22 @@ module.exports = {
         name: "Épicéa",
         type: "softwood",
         hardness: "tender"
+        
       
       },
 
       {
         name: "Pin",
         type: "softwood",
-        hardness: "medium-hard"
+        hardness: "medium-hard",
+        
       },
 
       {
         name: "Padouk",
         type: "exotic wood",
         hardness: "hard",
+        
       },
 
       {
