@@ -14,6 +14,8 @@ app.use("/api", router);
 
 
 
+
+
 db.sequelize
  .authenticate() 
  .then(() => console.log("Database connected ...")) 

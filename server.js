@@ -18,6 +18,8 @@
 
 // Hello world with express js 
 
+var cors = require('cors')
+
 require('dotenv').config();
 const app = require("./app.js");
 
@@ -29,6 +31,14 @@ const port =process.env.PORT
    
 //   res.send('Hello World!')
 // })
+
+const corsOptions = {
+  origin: 'http://localhost:8080',
+};
+
+app.get('/', cors(corsOptions), function (req, res, next) {
+  res.json({msg: 'This is CORS-enabled for only http://localhost:8080'})
+})
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
