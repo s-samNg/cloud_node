@@ -81,3 +81,23 @@ exports.update = async (req, res) => {
         res.status(500).json({ message: "Erreur, contactez le support" });
     }
 };
+
+exports.delete = async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const wood = await Wood.findOne({ where : {
+            id
+        }}); 
+        if (wood) {
+            await wood.destroy();
+        }
+        else {
+            res.status(404).json({ error: "Wood non trouvé" });
+        }
+    }catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Erreur, contactez le support" });
+    }
+
+}
