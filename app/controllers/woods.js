@@ -45,8 +45,6 @@ exports.create = async (req, res) => {
             
            pathname = `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`;
 
-        }else {
-            res.status(400).json({ error: "Uploadez votre image" });
         }
         
         const wood = await Wood.create({ ...JSON.parse(req.body.datas), image: pathname });
@@ -62,4 +60,24 @@ exports.create = async (req, res) => {
     }
     
 }
-    
+
+exports.update = async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        const wood = await Wood.findOne({ where: { 
+            id 
+        } });
+
+        if (wood) {
+            const updatedWood = await wood.update({ ...JSON.parse(req.body.datas) });
+            res.status(200).json(updatedWood);
+        }
+        else {
+            res.status(404).json({ error: "Wood non trouvé" });
+        }
+    }catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Erreur, contactez le support" });
+    }
+};
